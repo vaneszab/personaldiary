@@ -22,7 +22,7 @@ def home():
 
 @app.route('/diary', methods=['GET'])
 def show_diary():
-    articles = list(db.diary_lsv.find({}, {'_id': False}))
+    articles = list(db.diary_lsk.find({}, {'_id': False}))
     return jsonify({'articles': articles})
 
 @app.route('/diary', methods=['POST'])
@@ -53,7 +53,7 @@ def save_diary():
         'title': title_receive,
         'content': content_receive
     }
-    db.diary_lsv.insert_one(doc)
+    db.diary_lsk.insert_one(doc)
     return jsonify({'message': 'data was saved!'})
 
 if __name__ == '__main__':
